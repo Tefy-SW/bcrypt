@@ -55,7 +55,7 @@ function logout() {
 }
 
 // Endpoint base
-const API_URL = 'http://localhost:3000/api';
+const API_URL = '/api';
 
 // Manejo del Login
 document.getElementById('form-login').addEventListener('submit', async (e) => {
