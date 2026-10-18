@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Autenticación con Bcrypt</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 1. CONTENEDOR DEL FORMULARIO DE ACCESO -->
+  <main id="auth-section" class="auth-container">
+    <div class="tabs">
+      <button id="tab-login" class="tab active" onclick="switchTab('login')">Iniciar Sesión</button>
+      <button id="tab-register" class="tab" onclick="switchTab('register')">Registrarse</button>
+    </div>
+
+    <!-- Login -->
+    <form id="form-login" class="auth-form active">
+      <h2>Iniciar Sesión</h2>
+      <div class="form-group">
+        <label for="login-username">Usuario o Correo</label>
+        <input type="text" id="login-username" required placeholder="Ingresa tu usuario">
+      </div>
+      <div class="form-group">
+        <label for="login-password">Contraseña</label>
+        <input type="password" id="login-password" required placeholder="Ingresa tu contraseña">
+      </div>
+      <button type="submit" class="btn-submit">Entrar</button>
+    </form>
+
+    <!-- Registro -->
+    <form id="form-register" class="auth-form">
+      <h2>Crear Cuenta</h2>
+      <div class="form-group">
+        <label for="reg-username">Usuario o Correo</label>
+        <input type="text" id="reg-username" required placeholder="Elige un usuario">
+      </div>
+      <div class="form-group">
+        <label for="reg-password">Contraseña</label>
+        <input type="password" id="reg-password" required placeholder="Mínimo 6 caracteres">
+      </div>
+      <div class="form-group">
+        <label for="reg-confirm">Confirmar Contraseña</label>
+        <input type="password" id="reg-confirm" required placeholder="Repite la contraseña">
+      </div>
+      <button type="submit" class="btn-submit">Registrarse</button>
+    </form>
+
+    <div id="response-message" class="message"></div>
+  </main>
+
+  <!-- 2. PORTADA DE BIENVENIDA (Oculta al inicio) -->
+  <section id="welcome-dashboard" class="welcome-container hidden">
+    <div class="welcome-card">
+      <div class="status-badge">Sesión Activa</div>
+      <h1>¡Bienvenido/a de nuevo!</h1>
+      <p class="subtitle">Has iniciado sesión correctamente en el sistema seguro.</p>
+
+      <div class="user-info-box">
+        <p>Usuario autenticado:</p>
+        <strong id="display-username">usuario_demo</strong>
+      </div>
+
+      <div class="security-badge-card">
+        <div class="security-icon">🔒</div>
+        <div>
+          <h4>Protección Criptográfica</h4>
+          <p>Tu contraseña fue verificada mediante <code>bcrypt</code> en el servidor con salting robusto.</p>
+        </div>
+      </div>
+
+      <button id="btn-logout" class="btn-logout" onclick="logout()">Cerrar Sesión</button>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
